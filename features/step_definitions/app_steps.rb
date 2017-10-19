@@ -9,6 +9,13 @@ module WithinHelpers
 end
 World(WithinHelpers)
 
+
+Given /the following student requests exist/ do |student_requests_table|
+  student_requests_table.hashes.each do |student_request|
+    StudentRequest.create student_request
+  end
+end
+
 Given /^I am logged in as a tutor$/ do
   pending
 end
