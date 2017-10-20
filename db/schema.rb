@@ -11,7 +11,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171019003408) do
+ActiveRecord::Schema.define(version: 20171020074058) do
+
+  create_table "drop_in_histories", force: :cascade do |t|
+    t.integer  "student_id"
+    t.string   "course"
+    t.integer  "tutor_sid"
+    t.time     "start_time"
+    t.time     "end_time"
+    t.string   "tutor_notes"
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "drop_in_histroy", force: :cascade do |t|
+    t.string   "student_sid"
+    t.string   "course"
+    t.integer  "tutor_sid"
+    t.time     "start_time"
+    t.time     "end_time"
+    t.string   "tutor_notes"
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "student_queues", force: :cascade do |t|
+    t.integer  "student_sid"
+    t.string   "course"
+    t.integer  "tutor_sid"
+    t.time     "start_time"
+    t.boolean  "waiting?"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "student_requests", force: :cascade do |t|
     t.integer  "student_sid"
@@ -35,6 +69,15 @@ ActiveRecord::Schema.define(version: 20171019003408) do
     t.boolean  "concurrency_student"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
+  end
+
+  create_table "tutor_work_days", force: :cascade do |t|
+    t.integer  "tutor_sid"
+    t.integer  "start_time"
+    t.integer  "end_time"
+    t.string   "num_students"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "tutors", force: :cascade do |t|

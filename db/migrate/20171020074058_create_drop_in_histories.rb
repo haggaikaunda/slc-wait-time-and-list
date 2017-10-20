@@ -1,9 +1,8 @@
-class CreateDropInHistroys < ActiveRecord::Migration
+class CreateDropInHistories < ActiveRecord::Migration
   def change
-
-    create_table :drop_in_histroy do |t|
+    create_table :drop_in_histories do |t|
       #entered by student, visible on tutor form
-      t.string :student_sid #should be foreign key.
+      t.integer :student_id #should be foreign key.
       t.string :course
       t.integer :tutor_sid
       t.time :start_time

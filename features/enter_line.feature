@@ -12,6 +12,9 @@ Scenario: submit sign up form
   
 #add student to queue when they submit sign up page; do nothing if they stay and remove them if they don't.
 #fill out form and submit
+
+# TODO: Step definition for "I am on the wait time page should fill out the student information"
+@submited_form
 Scenario: wait in line
   Given I am on the wait time page
   Then I click "yes"
@@ -23,6 +26,16 @@ Scenario: don't wait in line
   When I click "no"
   Then I should be on the not in line page
   And I should see "Hope to see you soon"
+  
+  
+  
+  
+  
+Before('@submited_form')  do
+  Given I am on the sign up page
+  When I fill out my name with "Jennifer Be"
+  
+end 
 
 # Scenario: display sign up page
 #   Given I am on the wait time page
